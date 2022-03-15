@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title  >Ingreso Soul</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!login" >
+  <form (ngSubmit)="ingresar()" >
+<ion-card class="ion-text-center"> 
+  <ion-card-header  >
+    <img src="assets/img/Icon-Soul.svg" >
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item >
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input name="user"  [(ngModel)]="usuario.user"   autocomplete="off" type="text" ></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input  name="pass" [(ngModel)]="usuario.pass"  autocomplete="off" type="password" ></ion-input>
+    </ion-item>
+    <ion-tab-button [disabled]="usuario.pass.length < 4" (click)="ingresar()" >
+      <ion-icon color="primary" name="play-circle-outline"></ion-icon>
+      <ion-label color="primary"  >Ingresar</ion-label>
+    </ion-tab-button>
+  </ion-card-content>
+</ion-card>
+</form>
+</ion-content>
+
+ <ion-content  *ngIf="login" >
+   <ion-card>
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    <ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar>
+   </ion-card>
+ </ion-content>
+
+

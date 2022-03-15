@@ -1,20 +1,70 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title slot="start"> Home Soul </ion-title>
+    <ion-img style="width: 40px" src="assets/img/Icon-Soul.svg"></ion-img>
+    <ion-button
+      (click)="salirApp()"
+      slot="end"
+      expand="block"
+      fill="clear"
+      shape="round"
+    >
+      Salir
+      <ion-icon style="margin-left: 5px" name="exit-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  
+  <ion-grid fixed>
+    <ion-row style="text-align: center;">
+      <ion-col size="12"><label style="font-size: 50px;" for="">Bienvenido {{horario['name']}} </label></ion-col>
+    </ion-row>
+    <br><br><br>
+    <ion-row  >
+      <ion-col   style="text-align: center;" size="11">
+      <label for="">Tu turno</label>
+      </ion-col>
+      <ion-col size="4">  </ion-col>
+      <ion-col size="2">Inicio de Horario:</ion-col>
+      <ion-col  size="2">{{horario['hour_start']}} </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4"> </ion-col>
+      <ion-col size="2">Fin de Horario:</ion-col>
+      <ion-col size="2"> {{horario['hour_end']}} </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+    <br><br>
+    <ion-row>
+      <ion-col size="12"
+        ><ion-button (click)="startTurn()" [disabled]="inicioTurno" expand="block"
+          >Iniciar Turno</ion-button
+        ></ion-col
+      >
+      <ion-col size="12"
+        ><ion-button (click)="endTurn()" [disabled]="finalizadoTurno" expand="block"
+          >Finalizar Turno</ion-button
+        ></ion-col
+      >
+    </ion-row>
+    <br>
+    <ion-row *ngIf="inicioTurno"  >
+      <ion-col   style="text-align: center;" size="11">
+      <label for="">Tu ingreso</label>
+      </ion-col>
+      <ion-col size="4">  </ion-col>
+      <ion-col size="2">Inicio:</ion-col>
+      <ion-col  size="2">{{horario['hour_startCIU']}} </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+    <ion-row *ngIf="finalizadoTurno" >
+      <ion-col size="4"> </ion-col>
+      <ion-col size="2">Salida:</ion-col>
+      <ion-col size="2"> {{horario['hour_endCIU']}} </ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
